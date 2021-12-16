@@ -1,0 +1,41 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>customer</title>
+</head>
+<body>
+<h1> Find a Customer by name </h1>
+<form action="#" th:action="@{/findCustomers}" th:object="${customer}" method="post">
+<table border="1">
+    <tr>
+        <td><label >Name</label></td>
+        <td><input type="text" th:field="*{name}" /></td>
+    </tr>
+    <tr>
+        <td><input type="submit" value="Submit" /></td>
+    </tr>
+</table>
+</form>
+<table>
+
+
+    <thead>
+    <tr>
+        <th> Name </th>
+        <th> Surname </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="customer : ${customers}">
+        <td><span th:text="${customer.name}"> Name </span></td>
+        <td><span th:text="${customer.surName1}"> Surname 1 </span></td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+</body>
+</html>

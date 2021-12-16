@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>customer</title>
+</head>
+<body>
+<h1> Add Customer </h1>
+
+<form action="#" th:action="@{/saveCustomer}" th:object="${customer}" method="post">
+    <table border="1">
+        <tr>
+            <td><label >Name</label></td>
+            <td><input type="text" th:field="*{name}" /></td>
+        </tr>
+        <tr>
+            <td><label >Surname 1</label></td>
+            <td><input type="text" th:field="*{surName1}" /></td>
+        </tr>
+        <tr>
+            <td><label >Surname 2</label></td>
+            <td><input type="text" th:field="*{surName2}" /></td>
+        </tr>
+        <tr>
+            <td><label >DNI</label></td>
+            <td><input type="text" th:field="*{identityDocNumber}" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+</form>
+
+
+</body>
+</html>
