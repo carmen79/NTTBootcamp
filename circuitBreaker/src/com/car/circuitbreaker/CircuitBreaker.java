@@ -3,20 +3,31 @@ package com.car.circuitbreaker;
 public class CircuitBreaker {
 
     private Integer nintentosfallidos;
-    private Integer  nintendosok;
+    private Integer nintentosok;
     private Integer limiteerror;
     private Integer nintentosmax;
     private Integer numintentoactual;
 
-    public CircuitBreaker(Integer nintentosfallidos, Integer nintendosok, Integer limiteerror, Integer nintentosmax, Integer numintentoactual) {
+    public CircuitBreaker(Integer nintentosfallidos, Integer nintentosok, Integer limiteerror, Integer nintentosmax, Integer numintentoactual) {
         this.nintentosfallidos = nintentosfallidos;
-        this.nintendosok = nintendosok;
+        this.nintentosok = nintentosok;
         this.limiteerror = limiteerror;
         this.nintentosmax = nintentosmax;
         this.numintentoactual = numintentoactual;
     }
 
+    public void retry() {
+        // Simulamos un retry en el que sabemos que falla
+        this.nintentosfallidos++;
+        this.numintentoactual++;
+    }
     public String getEstado() {
+        // Si hacemos 5 (por ejemplo) intentos ok seguidos, ponemos los fallos a cero
+        if (this.nintentosok == 5 ) {
+            // Actualizamos el estado de fallos a cero
+            this.nintentosfallidos = 0;
+        }
+
         if (this.nintentosfallidos == 0) {
             return "CLOSED";
         } else if (this.nintentosfallidos >= this.limiteerror) {
@@ -34,12 +45,12 @@ public class CircuitBreaker {
         this.nintentosfallidos = nintentosfallidos;
     }
 
-    public Integer getNintendosok() {
-        return nintendosok;
+    public Integer getNintentosok() {
+        return nintentosok;
     }
 
-    public void setNintendosok(Integer nintendosok) {
-        this.nintendosok = nintendosok;
+    public void setNintentosok(Integer nintentosok) {
+        this.nintentosok = nintentosok;
     }
 
     public Integer getLimiteerror() {
@@ -70,7 +81,7 @@ public class CircuitBreaker {
     public String toString() {
         return "CircuitBreaker{" +
                 "nintentosfallidos=" + nintentosfallidos +
-                ", nintendosok=" + nintendosok +
+                ", nintendosok=" + nintentosok +
                 ", limiteerror=" + limiteerror +
                 ", nintentosmax=" + nintentosmax +
                 ", numintentoactual=" + numintentoactual +
