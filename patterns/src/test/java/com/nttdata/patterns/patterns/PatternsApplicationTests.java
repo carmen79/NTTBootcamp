@@ -1,0 +1,13 @@
+package com.nttdata.patterns.patterns;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class PatternsApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
